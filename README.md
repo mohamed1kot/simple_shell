@@ -96,6 +96,6 @@ Compile your shell using the following command:
 
 ```bash
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-
+```
 ## Author
-Mohamed amged khotaby
+- Mohamed amged khotaby
