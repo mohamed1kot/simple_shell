@@ -22,7 +22,7 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * strtow - Split a string into words using a delimiter.
+ * _strtok - Split a string into words using a delimiter.
  *
  * @str: The string to split.
  * @C: The delimiter used to split the string.
@@ -31,7 +31,7 @@ char *_strcat(char *dest, char *src)
  * the input string, or NULL on failure.
 */
 
-char **strtow(char *str, char *C)
+char **_strtok(char *str, char *C)
 {
 	int i, j, k, l, Num = 0;
 	char **S;
@@ -73,7 +73,7 @@ char **strtow(char *str, char *C)
 }
 
 /**
- * strtow2 - Split a string into words using a character delimiter.
+ * _strtok2 - Split a string into words using a character delimiter.
  *
  * @str: The string to split.
  * @C: The character delimiter used to split the string.
@@ -82,7 +82,7 @@ char **strtow(char *str, char *C)
  * the words from the input string, or NULL on failure.
 */
 
-char **strtow2(char *str, char C)
+char **_strtok2(char *str, char C)
 {
 	int i, j, k, l, Num = 0;
 	char **S;

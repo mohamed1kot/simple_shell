@@ -52,7 +52,7 @@ void set_info(INFO *information, char **av)
 	information->fname = av[0];
 	if (information->arg)
 	{
-		information->argv = strtow(information->arg, " \t");
+		information->argv = _strtok(information->arg, " \t");
 		if (!information->argv)
 		{
 
