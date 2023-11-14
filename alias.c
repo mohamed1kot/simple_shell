@@ -21,7 +21,7 @@ int set_alias(INFO *information, char *S)
 		return (unset_alias(information, S));
 
 	unset_alias(information, S);
-	return (add_node_end(&(information->alias), S, 0) == NULL);
+	return (add_Node_end(&(information->alias), S, 0) == NULL);
 }
 
 /**
@@ -43,21 +43,21 @@ int unset_alias(INFO *inf, char *S)
 		return (1);
 	c = *ptr;
 	*ptr = 0;
-	r = delete_node_at_index(&(inf->alias),
-		get_node_index(inf->alias, node_starts_with(inf->alias, S, -1)));
+	r = del_Node_at_index(&(inf->alias),
+		get_Node_index(inf->alias, Node_starts_with(inf->alias, S, -1)));
 	*ptr = c;
 	return (r);
 }
 
 /**
- * replace_alias - Replace command with an alias if a matching alias exists.
+ * rep_alias - Replace command with an alias if a matching alias exists.
  *
  * @information: A pointer to the INFO struct.
  *
  * Return: 1 if an alias was replaced, 0 otherwise.
 */
 
-int replace_alias(INFO *information)
+int rep_alias(INFO *information)
 {
 	int i;
 	LSIT *Node;
@@ -65,7 +65,7 @@ int replace_alias(INFO *information)
 
 	for (i = 0; i < 10; i++)
 	{
-		Node = node_starts_with(information->alias, information->argv[0], '=');
+		Node = Node_starts_with(information->alias, information->argv[0], '=');
 		if (!Node)
 			return (0);
 		free(information->argv[0]);

@@ -2,7 +2,7 @@
 
 
 /**
- * node_starts_with - Find the first Node whose string
+ * Node_starts_with - Find the first Node whose string
  * starts with a given prefix.
  *
  * @Node: A pointer to the head of the linked list.
@@ -13,7 +13,7 @@
  * Return: A pointer to the first matching Node, or NULL if not found.
 */
 
-LSIT *node_starts_with(LSIT *Node, char *pre, char c)
+LSIT *Node_starts_with(LSIT *Node, char *pre, char c)
 {
 	char *ptr = NULL;
 
@@ -28,7 +28,7 @@ LSIT *node_starts_with(LSIT *Node, char *pre, char c)
 }
 
 /**
- * get_node_index - Get the index of a Node in a linked list.
+ * get_Node_index - Get the index of a Node in a linked list.
  *
  * @head: A pointer to the head of the linked list.
  * @Node: A pointer to the Node whose index is to be found.
@@ -36,7 +36,7 @@ LSIT *node_starts_with(LSIT *Node, char *pre, char c)
  * Return: The index of the Node in the list, or -1 if not found.
 */
 
-ssize_t get_node_index(LSIT *head, LSIT *Node)
+ssize_t get_Node_index(LSIT *head, LSIT *Node)
 {
 	size_t j = 0;
 
@@ -51,7 +51,7 @@ ssize_t get_node_index(LSIT *head, LSIT *Node)
 }
 
 /**
- * add_node - Add a new Node to the beginning of a linked list.
+ * add_Node - Add a new Node to the beginning of a linked list.
  *
  * @head: A pointer to a pointer to the head of the linked list.
  * @S: The string to be stored in the new Node (can be NULL).
@@ -60,7 +60,7 @@ ssize_t get_node_index(LSIT *head, LSIT *Node)
  * Return: A pointer to the new Node if successful, NULL on failure.
 */
 
-LSIT *add_node(LSIT **head, const char *S, int number)
+LSIT *add_Node(LSIT **head, const char *S, int number)
 {
 	LSIT *new_head;
 
@@ -84,4 +84,3 @@ LSIT *add_node(LSIT **head, const char *S, int number)
 	*head = new_head;
 	return (new_head);
 }
-

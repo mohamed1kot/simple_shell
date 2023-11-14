@@ -1,16 +1,16 @@
 #include "shell.h"
 
 /**
- * _myhistory - prints the command history.
+ * _Myhistory - prints the command history.
  *
  * @indormation: A pointer to the INFO struct that holds the command history.
  *
  * Return: Always returns 0.
 */
 
-int _myhistory(INFO *indormation)
+int _Myhistory(INFO *indormation)
 {
-	print_list(indormation->history);
+	P_list(indormation->history);
 	return (0);
 }
 
@@ -41,14 +41,14 @@ char *get_history_file(INFO *indormation)
 }
 
 /**
- * write_history - Write command history to a file.
+ * w_history - Write command history to a file.
  *
  * @indormation: A pointer to the INFO struct.
  *
  * Return: 1 if successful, -1 on failure.
 */
 
-int write_history(INFO *indormation)
+int w_history(INFO *indormation)
 {
 	ssize_t fd;
 	char *F_name = get_history_file(indormation);
@@ -72,14 +72,14 @@ int write_history(INFO *indormation)
 }
 
 /**
- * read_history - Read command history from a file.
+ * R_history - Read command history from a file.
  *
  * @indormation: A pointer to the INFO struct.
  *
  * Return: The number of history entries read, 0 on failure.
 */
 
-int read_history(INFO *indormation)
+int R_history(INFO *indormation)
 {
 	int i, end = 0, linecount = 0;
 	ssize_t fd, length, size = 0;
@@ -117,7 +117,7 @@ int read_history(INFO *indormation)
 	free(buffer);
 	indormation->histcount = linecount;
 	while (indormation->histcount-- >= M_history)
-		delete_node_at_index(&(indormation->history), 0);
+		del_Node_at_index(&(indormation->history), 0);
 	renumber_history(indormation);
 	return (indormation->histcount);
 }

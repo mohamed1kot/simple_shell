@@ -39,7 +39,7 @@ int _atoi(char *str)
 
 
 /**
- * _erratoi - Convert a string to an integer, with error handling.
+ * _eatoi - Convert a string to an integer, with error handling.
  *
  * @str: The string to convert to an integer.
  *
@@ -47,7 +47,7 @@ int _atoi(char *str)
  *         -1 if the string contains non-numeric characters or overflows.
 */
 
-int _erratoi(char *str)
+int _eatoi(char *str)
 {
 	int i = 0;
 	unsigned long int result = 0;
@@ -152,4 +152,3 @@ char *_strchr(char *str, char c)
 
 	return (NULL);
 }
-

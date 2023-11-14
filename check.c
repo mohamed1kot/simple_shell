@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * is_delim - checks if a character is a delimiter.
+ * is_delimiter - checks if a character is a delimiter.
  *
  * @count: The character to check.
  * @delimater: A string containing delimiter characters.
@@ -9,7 +9,7 @@
  * Return: Returns 1 if the character is a delimiter; otherwise, returns 0.
 */
 
-int is_delim(char count, char *delimater)
+int is_delimiter(char count, char *delimater)
 {
 	while (*delimater)
 		if (*delimater++ == count)
@@ -19,7 +19,7 @@ int is_delim(char count, char *delimater)
 
 
 /**
- * _isalpha - checks if a character is an alphabetic character.
+ * _isAlpha - checks if a character is an alphabetic character.
  *
  * @i: The character to check.
  *
@@ -27,7 +27,7 @@ int is_delim(char count, char *delimater)
  * otherwise, returns 0.
 */
 
-int _isalpha(int i)
+int _isAlpha(int i)
 {
 	if ((i >= 'a' && i <= 'z') || (i >= 'A' && i <= 'Z'))
 		return (1);
@@ -36,7 +36,7 @@ int _isalpha(int i)
 }
 
 /**
- * is_cmd - Check if a PATH points to an executable command.
+ * is_Cmd - Check if a PATH points to an executable command.
  *
  * @information: A pointer to the INFO struct.
  * @PATH: The PATH to be checked.
@@ -44,7 +44,7 @@ int _isalpha(int i)
  * Return: 1 if the PATH is an executable command, 0 if not.
 */
 
-int is_cmd(INFO *information, char *PATH)
+int is_Cmd(INFO *information, char *PATH)
 {
 	struct stat ST;
 
@@ -59,7 +59,7 @@ int is_cmd(INFO *information, char *PATH)
 	return (0);
 }
 /**
- * is_chain - Check if a command buffer contains a chaining operator.
+ * is_Chain - Check if a command buffer contains a chaining operator.
  *
  * @information: A pointer to the INFO struct.
  * @buffer: The command buffer to check.
@@ -68,7 +68,7 @@ int is_cmd(INFO *information, char *PATH)
  * Return: 1 if a chaining operator is found, 0 otherwise.
 */
 
-int is_chain(INFO *information, char *buffer, size_t *Ptr)
+int is_Chain(INFO *information, char *buffer, size_t *Ptr)
 {
 	size_t j = *Ptr;
 
@@ -97,7 +97,7 @@ int is_chain(INFO *information, char *buffer, size_t *Ptr)
 
 
 /**
- * check_chain - Check and process chaining operators.
+ * Check_chain - Check and process chaining operators.
  *
  * @inf: A pointer to the INFO struct.
  * @buff: The command buffer to check.
@@ -106,7 +106,7 @@ int is_chain(INFO *information, char *buffer, size_t *Ptr)
  * @len: The length of the buffer.
 */
 
-void check_chain(INFO *inf, char *buff, size_t *Ptr, size_t i, size_t len)
+void Check_chain(INFO *inf, char *buff, size_t *Ptr, size_t i, size_t len)
 {
 	size_t j = *Ptr;
 

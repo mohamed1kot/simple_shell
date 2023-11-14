@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * _myalias - Handles the 'alias' command.
+ * _Myalias - Handles the 'alias' command.
  *
  * @inf: A pointer to the INFO struct containing the alias list.
  *
  * Return: 0 on success.
 */
 
-int _myalias(INFO *inf)
+int _Myalias(INFO *inf)
 {
 	int i = 0;
 	char *ptr = NULL;
@@ -19,7 +19,7 @@ int _myalias(INFO *inf)
 		Node = inf->alias;
 		while (Node)
 		{
-			print_alias(Node);
+			P_alias(Node);
 			Node = Node->next;
 		}
 		return (0);
@@ -30,36 +30,36 @@ int _myalias(INFO *inf)
 		if (ptr)
 			set_alias(inf, inf->argv[i]);
 		else
-			print_alias(node_starts_with(inf->alias, inf->argv[i], '='));
+			P_alias(Node_starts_with(inf->alias, inf->argv[i], '='));
 	}
 
 	return (0);
 }
 
 /**
- * _myexit - Handles the 'exit' command to terminate the shell.
+ * _Myexit - Handles the 'exit' command to terminate the shell.
  *
  * @information: A pointer to the INFO struct that holds command information.
  *
  * Return: -2 to indicate the shell should exit, or 1 if an error occurs.
 */
 
-int _myexit(INFO *information)
+int _Myexit(INFO *information)
 {
 	int endcheck;
 
 	if (information->argv[1])
 	{
-		endcheck = _erratoi(information->argv[1]);
+		endcheck = _eatoi(information->argv[1]);
 		if (endcheck == -1)
 		{
 			information->status = 2;
-			print_error(information, "illegal num: ");
+			P_error(information, "illegal num: ");
 			_eputs(information->argv[1]);
 			_eputchar('\n');
 			return (1);
 		}
-		information->err_num = _erratoi(information->argv[1]);
+		information->err_num = _eatoi(information->argv[1]);
 		return (-2);
 	}
 	information->err_num = -1;
@@ -67,7 +67,7 @@ int _myexit(INFO *information)
 }
 
 /**
- * _mycd - Handles the 'cd' command to change the current directory.
+ * _Mycd - Handles the 'cd' command to change the current directory.
  *
  * @information: A pointer to the INFO struct
  * containing command and environment information.
@@ -75,7 +75,7 @@ int _myexit(INFO *information)
  * Return: 0 on success, 1 on certain error conditions.
 */
 
-int _mycd(INFO *information)
+int _Mycd(INFO *information)
 {
 	char *s, *D, buffer[1024];
 	int _chdir;
@@ -108,7 +108,7 @@ int _mycd(INFO *information)
 		_chdir = chdir(information->argv[1]);
 	if (_chdir == -1)
 	{
-		print_error(information, "can't cd to ");
+		P_error(information, "can't cd to ");
 		_eputs(information->argv[1]), _eputchar('\n');
 	}
 	else
@@ -120,14 +120,14 @@ int _mycd(INFO *information)
 }
 
 /**
- * _myhelp - Handles the 'help' command (currently unimplemented).
+ * _Myhelp - Handles the 'help' command (currently unimplemented).
  *
  * @information: A pointer to the INFO struct that holds command information.
  *
  * Return: Always returns 0.
 */
 
-int _myhelp(INFO *information)
+int _Myhelp(INFO *information)
 {
 	char **arg_arr;
 
@@ -139,7 +139,7 @@ int _myhelp(INFO *information)
 }
 
 /**
- * _myenv - Displays the environment variables.
+ * _Myenv - Displays the environment variables.
  *
  * @information: A pointer to the INFO
  * struct containing environment information.
@@ -147,9 +147,9 @@ int _myhelp(INFO *information)
  * Return: Always returns 0.
 */
 
-int _myenv(INFO *information)
+int _Myenv(INFO *information)
 {
-	print_list_str(information->env);
+	P_list_str(information->env);
 	return (0);
 }
 

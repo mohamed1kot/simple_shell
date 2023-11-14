@@ -2,12 +2,12 @@
 
 
 /**
- * remove_comments - Remove comments from a string.
+ * rem_comments - Remove comments from a string.
  *
  * @buffer: The input string that may contain comments.
 */
 
-void remove_comments(char *buffer)
+void rem_comments(char *buffer)
 {
 	int count;
 
@@ -21,16 +21,15 @@ void remove_comments(char *buffer)
 
 
 /**
- * clear_info - Clear information in the INFO struct.
+ * clear_information - Clear information in the INFO struct.
  *
  * @information: A pointer to the INFO struct to be cleared.
 */
 
-void clear_info(INFO *information)
+void clear_information(INFO *information)
 {
 	information->arg = NULL;
 	information->argv = NULL;
 	information->path = NULL;
 	information->argc = 0;
 }
-

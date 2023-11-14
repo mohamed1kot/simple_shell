@@ -22,7 +22,7 @@ size_t list_len(const LSIT *head)
 }
 
 /**
- * LSITo_strings - Convert a linked list of strings to an array of strings.
+ * LSITTo_strings - Convert a linked list of strings to an array of strings.
  *
  * @head: A pointer to the head of the linked list.
  *
@@ -30,7 +30,7 @@ size_t list_len(const LSIT *head)
  * terminated with a NULL pointer.Returns NULL on failure.
 */
 
-char **LSITo_strings(LSIT *head)
+char **LSITTo_strings(LSIT *head)
 {
 	LSIT *Node = head;
 	size_t l = list_len(head), j;
@@ -59,5 +59,3 @@ char **LSITo_strings(LSIT *head)
 	strs[l] = NULL;
 	return (strs);
 }
-
-

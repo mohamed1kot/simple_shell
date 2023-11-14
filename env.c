@@ -2,38 +2,38 @@
 
 
 /**
- * populate_env_list - Populate the environment list from the 'environ' array.
+ * pop_env_list - Populate the environment list from the 'environ' array.
  *
  * @information: A pointer to the INFO struct.
  *
  * Return: Always returns 0.
 */
 
-int populate_env_list(INFO *information)
+int pop_env_list(INFO *information)
 {
 	LSIT *Node = NULL;
 	size_t j;
 
 	for (j = 0; environ[j]; j++)
-		add_node_end(&Node, environ[j], 0);
+		add_Node_end(&Node, environ[j], 0);
 	information->env = Node;
 	return (0);
 }
 
 
 /**
- * get_environ - Retrieve the environment variables.
+ * get_Environ - Retrieve the environment variables.
  *
  * @information: A pointer to the INFO struct.
  *
  * Return: An array of strings containing environment variables.
 */
 
-char **get_environ(INFO *information)
+char **get_Environ(INFO *information)
 {
 	if (!information->environ || information->env_changed)
 	{
-		information->environ = LSITo_strings(information->env);
+		information->environ = LSITTo_strings(information->env);
 		information->env_changed = 0;
 	}
 
@@ -63,7 +63,7 @@ int _unsetenv(INFO *information, char *V)
 		Ptr = starts_with(Node->str, V);
 		if (Ptr && *Ptr == '=')
 		{
-			information->env_changed = delete_node_at_index(&(information->env), j);
+			information->env_changed = del_Node_at_index(&(information->env), j);
 			j = 0;
 			Node = information->env;
 			continue;
@@ -112,7 +112,7 @@ int _setenv(INFO *information, char *V, char *val)
 		}
 		Node = Node->next;
 	}
-	add_node_end(&(information->env), buffer, 0);
+	add_Node_end(&(information->env), buffer, 0);
 	free(buffer);
 	information->env_changed = 1;
 	return (0);

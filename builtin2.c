@@ -28,7 +28,7 @@ char *_getenv(INFO *information, const char *name)
 }
 
 /**
- * _mysetenv - Set an environment variable.
+ * _Mysetenv - Set an environment variable.
  *
  * @information: A pointer to the INFO struct
  * containing environment information.
@@ -36,7 +36,7 @@ char *_getenv(INFO *information, const char *name)
  * Return: 0 on success, 1 on error.
 */
 
-int _mysetenv(INFO *information)
+int _Mysetenv(INFO *information)
 {
 	if (information->argc != 3)
 	{
@@ -49,7 +49,7 @@ int _mysetenv(INFO *information)
 }
 
 /**
- * _myunsetenv - Unset one or more environment variables.
+ * _Myunsetenv - Unset one or more environment variables.
  *
  * @information: A pointer to the INFO
  * struct containing environment information.
@@ -57,7 +57,7 @@ int _mysetenv(INFO *information)
  * Return: 0 on success, 1 on error.
 */
 
-int _myunsetenv(INFO *information)
+int _Myunsetenv(INFO *information)
 {
 	int count;
 

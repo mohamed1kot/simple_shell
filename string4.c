@@ -41,7 +41,7 @@ char **strtow(char *str, char *C)
 	if (!C)
 		C = " ";
 	for (i = 0; str[i] != '\0'; i++)
-		if (!is_delim(str[i], C) && (is_delim(str[i + 1], C) || !str[i + 1]))
+		if (!is_delimiter(str[i], C) && (is_delimiter(str[i + 1], C) || !str[i + 1]))
 			Num++;
 
 	if (Num == 0)
@@ -51,10 +51,10 @@ char **strtow(char *str, char *C)
 		return (NULL);
 	for (i = 0, j = 0; j < Num; j++)
 	{
-		while (is_delim(str[i], C))
+		while (is_delimiter(str[i], C))
 			i++;
 		k = 0;
-		while (!is_delim(str[i + k], C) && str[i + k])
+		while (!is_delimiter(str[i + k], C) && str[i + k])
 			k++;
 		S[j] = malloc((k + 1) * sizeof(char));
 		if (!S[j])
@@ -123,7 +123,7 @@ char **strtow2(char *str, char C)
 
 
 /**
- * replace_string - Replace an old string with a new string.
+ * rep_string - Replace an old string with a new string.
  *
  * @old: A pointer to the old string.
  * @new: A pointer to the new string.
@@ -131,10 +131,9 @@ char **strtow2(char *str, char C)
  * Return: 1 if successful, 0 on failure.
 */
 
-int replace_string(char **old, char *new)
+int rep_string(char **old, char *new)
 {
 	free(*old);
 	*old = new;
 	return (1);
 }
-

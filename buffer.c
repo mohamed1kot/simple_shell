@@ -2,7 +2,7 @@
 
 
 /**
- * input_buf - Read input from standard input into a buffer.
+ * in_buf - Read input from standard input into a buffer.
  *
  * @information: A pointer to the INFO struct.
  * @buffer: A pointer to the buffer for input.
@@ -11,7 +11,7 @@
  * Return: The number of characters read, -1 on failure.
 */
 
-ssize_t input_buf(INFO *information, char **buffer, size_t *length)
+ssize_t in_buf(INFO *information, char **buffer, size_t *length)
 {
 	ssize_t l = 0;
 	size_t len_p = 0;
@@ -20,7 +20,7 @@ ssize_t input_buf(INFO *information, char **buffer, size_t *length)
 	{
 		free(*buffer);
 		*buffer = NULL;
-		signal(SIGINT, sigintHandler);
+		signal(SIGINT, sig_Handler);
 #if U_getline
 		l = getline(buffer, &len_p, stdin);
 #else
@@ -34,7 +34,7 @@ ssize_t input_buf(INFO *information, char **buffer, size_t *length)
 				l--;
 			}
 			information->linecount_flag = 1;
-			remove_comments(*buffer);
+			rem_comments(*buffer);
 			build_history_list(information, *buffer, information->histcount++);
 			{
 				*length = l;
@@ -46,7 +46,7 @@ ssize_t input_buf(INFO *information, char **buffer, size_t *length)
 }
 
 /**
- * get_input - Get input from a buffer,
+ * get_in - Get input from a buffer,
  * process it, and store it in the INFO struct.
  *
  * @information: A pointer to the INFO struct.
@@ -54,7 +54,7 @@ ssize_t input_buf(INFO *information, char **buffer, size_t *length)
  * Return: The number of characters processed, -1 on failure.
 */
 
-ssize_t get_input(INFO *information)
+ssize_t get_in(INFO *information)
 {
 	static char *buffer;
 	static size_t i, j, length;
@@ -62,7 +62,7 @@ ssize_t get_input(INFO *information)
 	char **buff_p = &(information->arg), *p;
 
 	_putchar(BUF_FLUSH);
-	l = input_buf(information, &buffer, &length);
+	l = in_buf(information, &buffer, &length);
 	if (l == -1)
 		return (-1);
 	if (length)
@@ -70,10 +70,10 @@ ssize_t get_input(INFO *information)
 		j = i;
 		p = buffer + i;
 
-		check_chain(information, buffer, &j, i, length);
+		Check_chain(information, buffer, &j, i, length);
 		while (j < length)
 		{
-			if (is_chain(information, buffer, &j))
+			if (is_Chain(information, buffer, &j))
 				break;
 			j++;
 		}
@@ -94,7 +94,7 @@ ssize_t get_input(INFO *information)
 }
 
 /**
- * read_buf - Read data from a file descriptor into a buffer.
+ * read_buffer - Read data from a file descriptor into a buffer.
  *
  * @information: A pointer to the INFO struct.
  * @buffer: A pointer to the buffer for reading.
@@ -103,7 +103,7 @@ ssize_t get_input(INFO *information)
  * Return: The number of bytes read, 0 on end of file, -1 on failure.
 */
 
-ssize_t read_buf(INFO *information, char *buffer, size_t *i)
+ssize_t read_buffer(INFO *information, char *buffer, size_t *i)
 {
 	ssize_t l = 0;
 
@@ -114,4 +114,3 @@ ssize_t read_buf(INFO *information, char *buffer, size_t *i)
 		*i = l;
 	return (l);
 }
-

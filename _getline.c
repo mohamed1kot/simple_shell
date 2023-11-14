@@ -25,7 +25,7 @@ int _getline(INFO *information, char **pointer, size_t *length)
 	if (i == l)
 		i = l = 0;
 
-	r = read_buf(information, buffer, &l);
+	r = read_buffer(information, buffer, &l);
 	if (r == -1 || (r == 0 && l == 0))
 		return (-1);
 
@@ -49,4 +49,3 @@ int _getline(INFO *information, char **pointer, size_t *length)
 	*pointer = ptr;
 	return (s);
 }
-

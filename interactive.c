@@ -15,4 +15,3 @@ int interactive(INFO *information)
 {
 	return (isatty(STDIN_FILENO) && information->readfd <= 2);
 }
-

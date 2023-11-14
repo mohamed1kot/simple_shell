@@ -2,14 +2,14 @@
 
 
 /**
- * print_alias - Prints the alias stored in the given Node.
+ * P_alias - Prints the alias stored in the given Node.
  *
  * @Node: A pointer to the Node containing the alias.
  *
  * Return: 0 on success, 1 on failure.
 */
 
-int print_alias(LSIT *Node)
+int P_alias(LSIT *Node)
 {
 	char *ptr = NULL, *r = NULL;
 
@@ -28,13 +28,13 @@ int print_alias(LSIT *Node)
 
 
 /**
- * print_error - Print an error message.
+ * P_error - Print an error message.
  *
  * @information: A pointer to the INFO struct containing error information.
  * @e_str: The error message to print.
 */
 
-void print_error(INFO *information, char *e_str)
+void P_error(INFO *information, char *e_str)
 {
 	_eputs(information->fname);
 	_eputs(": ");
@@ -88,14 +88,14 @@ int print_d(int input, int fd)
 
 
 /**
- * print_list - Print the content of a linked list.
+ * P_list - Print the content of a linked list.
  *
  * @head: A pointer to the head of the linked list.
  *
  * Return: The number of nodes printed.
 */
 
-size_t print_list(const LSIT *head)
+size_t P_list(const LSIT *head)
 {
 	size_t i = 0;
 
@@ -113,14 +113,14 @@ size_t print_list(const LSIT *head)
 }
 
 /**
- * print_list_str - Print the content of a linked list of strings.
+ * P_list_str - Print the content of a linked list of strings.
  *
  * @head: A pointer to the head of the linked list.
  *
  * Return: The number of nodes printed.
 */
 
-size_t print_list_str(const LSIT *head)
+size_t P_list_str(const LSIT *head)
 {
 	size_t i = 0;
 
@@ -133,4 +133,3 @@ size_t print_list_str(const LSIT *head)
 	}
 	return (i);
 }
-

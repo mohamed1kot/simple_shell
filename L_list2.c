@@ -2,7 +2,7 @@
 
 
 /**
- * add_node_end - Add a new Node to the end of a linked list.
+ * add_Node_end - Add a new Node to the end of a linked list.
  *
  * @head: A pointer to a pointer to the head of the linked list.
  * @str: The string to be stored in the new Node (can be NULL).
@@ -11,7 +11,7 @@
  * Return: A pointer to the new Node if successful, NULL on failure.
 */
 
-LSIT *add_node_end(LSIT **head, const char *str, int number)
+LSIT *add_Node_end(LSIT **head, const char *str, int number)
 {
 	LSIT *N_node, *Node;
 
@@ -45,7 +45,7 @@ LSIT *add_node_end(LSIT **head, const char *str, int number)
 }
 
 /**
- * delete_node_at_index - Delete a Node at a specified idx in a linked list.
+ * del_Node_at_index - Delete a Node at a specified idx in a linked list.
  *
  * @head: A pointer to a pointer to the head of the linked list.
  * @idx: The idx of the Node to be deleted.
@@ -54,7 +54,7 @@ LSIT *add_node_end(LSIT **head, const char *str, int number)
  * 0 if the Node is not found or head is NULL.
 */
 
-int delete_node_at_index(LSIT **head, unsigned int idx)
+int del_Node_at_index(LSIT **head, unsigned int idx)
 {
 	LSIT *Node, *previous_node;
 	unsigned int i = 0;
@@ -88,13 +88,13 @@ int delete_node_at_index(LSIT **head, unsigned int idx)
 }
 
 /**
- * free_list - Free the memory used by
+ * f_list - Free the memory used by
  * a linked list and set the head pointer to NULL.
  *
  * @head_P: A pointer to a pointer to the head of the linked list.
 */
 
-void free_list(LSIT **head_P)
+void f_list(LSIT **head_P)
 {
 	LSIT *Node, *next_node, *head;
 
@@ -111,4 +111,3 @@ void free_list(LSIT **head_P)
 	}
 	*head_P = NULL;
 }
-

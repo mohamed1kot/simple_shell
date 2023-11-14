@@ -2,7 +2,7 @@
 
 
 /**
- * find_path - Find the full PATH to an executable command.
+ * find_PATH - Find the full PATH to an executable command.
  *
  * @information: A pointer to the INFO struct.
  * @pathstr: The PATH string containing colon-separated directories.
@@ -12,7 +12,7 @@
  * the full PATH to the command if found, or NULL if not found.
 */
 
-char *find_path(INFO *information, char *pathstr, char *C)
+char *find_PATH(INFO *information, char *pathstr, char *C)
 {
 	int i = 0, curr_pos = 0;
 	char *PATH;
@@ -21,7 +21,7 @@ char *find_path(INFO *information, char *pathstr, char *C)
 		return (NULL);
 	if ((_strlen(C) > 2) && starts_with(C, "./"))
 	{
-		if (is_cmd(information, C))
+		if (is_Cmd(information, C))
 			return (C);
 	}
 	while (1)
@@ -36,7 +36,7 @@ char *find_path(INFO *information, char *pathstr, char *C)
 				_strcat(PATH, "/");
 				_strcat(PATH, C);
 			}
-			if (is_cmd(information, PATH))
+			if (is_Cmd(information, PATH))
 				return (PATH);
 			if (!pathstr[i])
 				break;
@@ -49,7 +49,7 @@ char *find_path(INFO *information, char *pathstr, char *C)
 
 
 /**
- * find_builtin - Find and execute built-in commands.
+ * f_builtin - Find and execute built-in commands.
  *
  * @information: A pointer to the INFO struct.
  *
@@ -57,18 +57,18 @@ char *find_path(INFO *information, char *pathstr, char *C)
  * the executed built-in command or -1 if not found.
 */
 
-int find_builtin(INFO *information)
+int f_builtin(INFO *information)
 {
 	int i, built_in_ = -1;
 	builtin_t builtintbl[] = {
-		{"exit", _myexit},
-		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
-		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
-		{"cd", _mycd},
-		{"alias", _myalias},
+		{"exit", _Myexit},
+		{"env", _Myenv},
+		{"help", _Myhelp},
+		{"history", _Myhistory},
+		{"setenv", _Mysetenv},
+		{"unsetenv", _Myunsetenv},
+		{"cd", _Mycd},
+		{"alias", _Myalias},
 		{NULL, NULL}
 	};
 
@@ -100,12 +100,12 @@ void find_cmd(INFO *inf)
 		inf->linecount_flag = 0;
 	}
 	for (i = 0, k = 0; inf->arg[i]; i++)
-		if (!is_delim(inf->arg[i], " \t\n"))
+		if (!is_delimiter(inf->arg[i], " \t\n"))
 			k++;
 	if (!k)
 		return;
 
-	PATH = find_path(inf, _getenv(inf, "PATH="), inf->argv[0]);
+	PATH = find_PATH(inf, _getenv(inf, "PATH="), inf->argv[0]);
 	if (PATH)
 	{
 		inf->path = PATH;
@@ -114,12 +114,12 @@ void find_cmd(INFO *inf)
 	else
 	{
 		if ((interactive(inf) || _getenv(inf, "PATH=")
-			|| inf->argv[0][0] == '/') && is_cmd(inf, inf->argv[0]))
+			|| inf->argv[0][0] == '/') && is_Cmd(inf, inf->argv[0]))
 			fork_cmd(inf);
 		else if (*(inf->arg) != '\n')
 		{
 			inf->status = 127;
-			print_error(inf, "not found\n");
+			P_error(inf, "not found\n");
 		}
 	}
 }
@@ -142,7 +142,7 @@ void fork_cmd(INFO *inf)
 	}
 	if (child == 0)
 	{
-		if (execve(inf->path, inf->argv, get_environ(inf)) == -1)
+		if (execve(inf->path, inf->argv, get_Environ(inf)) == -1)
 		{
 			free_info(inf, 1);
 			if (errno == EACCES)
@@ -157,7 +157,7 @@ void fork_cmd(INFO *inf)
 		{
 			inf->status = WEXITSTATUS(inf->status);
 			if (inf->status == 126)
-				print_error(inf, "Permission denied\n");
+				P_error(inf, "Permission denied\n");
 		}
 	}
 }

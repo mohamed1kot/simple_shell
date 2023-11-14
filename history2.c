@@ -17,7 +17,7 @@ int build_history_list(INFO *information, char *buffer, int L_count)
 
 	if (information->history)
 		Node = information->history;
-	add_node_end(&Node, buffer, L_count);
+	add_Node_end(&Node, buffer, L_count);
 
 	if (!information->history)
 		information->history = Node;
@@ -44,4 +44,3 @@ int renumber_history(INFO *information)
 	}
 	return (information->histcount = i);
 }
-

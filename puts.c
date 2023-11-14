@@ -87,4 +87,3 @@ int _putsfd(char *str, int fd)
 	}
 	return (j);
 }
-

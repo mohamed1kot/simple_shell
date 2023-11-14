@@ -19,11 +19,11 @@ void free_info(INFO *information, int A)
 		if (!information->cmd_buf)
 			free(information->arg);
 		if (information->env)
-			free_list(&(information->env));
+			f_list(&(information->env));
 		if (information->history)
-			free_list(&(information->history));
+			f_list(&(information->history));
 		if (information->alias)
-			free_list(&(information->alias));
+			f_list(&(information->alias));
 		ffree(information->environ);
 			information->environ = NULL;
 		bfree((void **)information->cmd_buf);
@@ -70,4 +70,3 @@ void ffree(char **P)
 		free(*P++);
 	free(a);
 }
-

@@ -67,8 +67,8 @@ void set_info(INFO *information, char **av)
 			;
 		information->argc = j;
 
-		replace_alias(information);
-		replace_vars(information);
+		rep_alias(information);
+		rep_var(information);
 	}
 }
 
@@ -88,15 +88,15 @@ int hsh(INFO *information, char **av)
 
 	while (r != -1 && builtin_ret != -2)
 	{
-		clear_info(information);
+		clear_information(information);
 		if (interactive(information))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
-		r = get_input(information);
+		r = get_in(information);
 		if (r != -1)
 		{
 			set_info(information, av);
-			builtin_ret = find_builtin(information);
+			builtin_ret = f_builtin(information);
 			if (builtin_ret == -1)
 				find_cmd(information);
 		}
@@ -104,7 +104,7 @@ int hsh(INFO *information, char **av)
 			_putchar('\n');
 		free_info(information, 0);
 	}
-	write_history(information);
+	w_history(information);
 	free_info(information, 1);
 	if (!interactive(information) && information->status)
 		exit(information->status);
@@ -136,7 +136,7 @@ char *starts_with(const char *stack, const char *needle)
 }
 
 /**
- * replace_vars - Replace environment variables
+ * rep_var - Replace environment variables
  * and special variables in command arguments.
  *
  * @information: A pointer to the INFO struct.
@@ -144,7 +144,7 @@ char *starts_with(const char *stack, const char *needle)
  * Return: 0 if successful, -1 on failure.
 */
 
-int replace_vars(INFO *information)
+int rep_var(INFO *information)
 {
 	int j = 0;
 	LSIT *Node;
@@ -156,26 +156,25 @@ int replace_vars(INFO *information)
 
 		if (!_strcmp(information->argv[j], "$?"))
 		{
-			replace_string(&(information->argv[j]),
+			rep_string(&(information->argv[j]),
 				_strdup(convert_number(information->status, 10, 0)));
 			continue;
 		}
 		if (!_strcmp(information->argv[j], "$$"))
 		{
-			replace_string(&(information->argv[j]),
+			rep_string(&(information->argv[j]),
 				_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
-		Node = node_starts_with(information->env, &information->argv[j][1], '=');
+		Node = Node_starts_with(information->env, &information->argv[j][1], '=');
 		if (Node)
 		{
-			replace_string(&(information->argv[j]),
+			rep_string(&(information->argv[j]),
 				_strdup(_strchr(Node->str, '=') + 1));
 			continue;
 		}
-		replace_string(&information->argv[j], _strdup(""));
+		rep_string(&information->argv[j], _strdup(""));
 
 	}
 	return (0);
 }
-
