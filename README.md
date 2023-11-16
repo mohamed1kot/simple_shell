@@ -26,10 +26,6 @@ This project is a group project, and you will be paired with a partner. It is es
 
 A group project at ALX SE is a shared responsibility. All code pushed to GitHub is the joint responsibility of both partners. It is not acceptable to claim ignorance later if issues arise; communication is key.
 
-### Plagiarism Policy
-
-If a group is caught for plagiarism, both partners will face consequences. Ignorance or claiming not to have contributed will not excuse any individual from the consequences.
-
 ### Shell Project Specifics
 
 The shell project is an exciting group endeavor. Enjoy the process and good luck!
@@ -98,4 +94,4 @@ Compile your shell using the following command:
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 ## Author
-- Mohamed amged khotaby
+- Mohamed khotaby
